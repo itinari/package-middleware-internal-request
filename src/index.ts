@@ -2,10 +2,12 @@ import {Request, Response, NextFunction} from 'express'
 import {Unauthorized} from '@itinari/lib-http-status'
 
 declare module 'express' {
+  interface RequestContext {
+    internalRequest: boolean
+  }
+
   interface Request {
-    ctx: {
-      internalRequest: boolean
-    }
+    ctx: RequestContext
   }
 }
 
